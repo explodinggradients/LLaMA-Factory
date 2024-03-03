@@ -374,5 +374,15 @@
       "prompt": "content"
     },
     "folder": "python"
+  },
+  "critic_data": {
+    "hf_hub_url": "explodinggradients/critic_llm_data",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output",
+      "system": "system",
+      "history": "history"
+    }
   }
 }
