@@ -297,8 +297,11 @@ def patch_model(
     if getattr(model.config, "model_type", None) == "chatglm":
         setattr(model, "lm_head", model.transformer.output_layer)
         setattr(model, "_keys_to_ignore_on_save", ["lm_head.weight"])
+        
+    if model_args.special_tokens is not None:
+        tokenizer.add_special_tokens(model_args.special_tokens)
 
-    if model_args.resize_vocab:
+    if model_args.resize_vocab or model_args.special_tokens is not None:
         _resize_embedding_layer(model, tokenizer)
 
     if is_trainable:

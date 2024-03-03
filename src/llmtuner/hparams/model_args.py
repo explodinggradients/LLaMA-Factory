@@ -33,6 +33,10 @@ class ModelArguments:
         default=False,
         metadata={"help": "Whether or not the special tokens should be split during the tokenization process."},
     )
+    special_tokens: Optional[Dict[str,str]] = field(
+        default=None,
+        metadata={"help": "Special tokens to add to the tokenizer seperated by comma."},
+    )
     model_revision: Optional[str] = field(
         default="main",
         metadata={"help": "The specific model version to use (can be a branch name, tag name or commit id)."},
@@ -121,6 +125,7 @@ class ModelArguments:
         default=False,
         metadata={"help": "For debugging purposes, print the status of the parameters in the model."},
     )
+    
 
     def __post_init__(self):
         self.compute_dtype = None
